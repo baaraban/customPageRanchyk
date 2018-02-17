@@ -29,11 +29,12 @@ def createSparse(theme, amount):
             line = line.replace(":", "")
             values = line.split()[:-1]
             for i in range(1, len(values)):
-                matrix[int(values[0])][int(values[i])] = 1
+                calc = 1/(len(values) - 1)
+                matrix[int(values[0])][int(values[i])] = calc
 
     for i in range(amount):
-        if(matrix[0][i] != 0):
-            print (matrix[0][i], "   ", i)
+        if(matrix[2][i] != 0):
+            print (matrix[2][i], "   ", i)
 
 
 getTextDictionary("armstrong")
