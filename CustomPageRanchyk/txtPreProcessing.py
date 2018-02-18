@@ -26,11 +26,12 @@ def deleteUseless(directory, filenamesToDelete):
             os.unlink(directory + file)
 
 
-for name in os.listdir(getFilePath(DATA_PATH, "")):
-    try:
-        createAmountFile(getFilePath(DATA_PATH + name + '/', "nodes"), getFilePath(DATA_PATH + name + '/', "amount"))
-        createWithoutBlankLines(getFilePath(DATA_PATH + name + '/', "nodes"))
-        deleteUseless(getFilePath(DATA_PATH + name + '/', ''), USELESS_FILES)
-    except UnicodeDecodeError:
-        continue
+def preProcess():
+    for name in os.listdir(getFilePath(DATA_PATH, "")):
+        try:
+            createAmountFile(getFilePath(DATA_PATH + name + '/', "nodes"), getFilePath(DATA_PATH + name + '/', "amount"))
+            createWithoutBlankLines(getFilePath(DATA_PATH + name + '/', "nodes"))
+            deleteUseless(getFilePath(DATA_PATH + name + '/', ''), USELESS_FILES)
+        except UnicodeDecodeError:
+            continue
 
