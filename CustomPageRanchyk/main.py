@@ -1,25 +1,29 @@
 import numpy as np, pickle
 from bz2 import BZ2File
 from datetime import datetime
-from pprint import pprint
-from time import sleep
-from tqdm import tqdm
-from tqdm import tqdm_notebook
-from scipy import sparse
-import os
-from sklearn.decomposition import randomized_svd
-from sklearn.externals.joblib import Memory
-import dataLoader
-import adjacencyConstruction
 
-PATH = '/data/dpedia/'
-URL_BASE = 'http://downloads.dbpedia.org/3.5.1/en/'
-filenames = ["redirects_en.nt.bz2", "page_links_en.nt.bz2"]
+import loadingFromTextFile
+import pureMath
+import calculations
+import numpy
 
-redirects_filename = dataLoader.getFilePath(PATH, filenames[0]);
-page_links_filename = dataLoader.getFilePath(PATH, filenames[1]);
+matrix, dict = loadingFromTextFile.getMatrixAndDictionary("armstrong")
 
-redirects = adjacencyConstruction.get_redirects(redirects_filename)
+test = numpy.ones(shape=(3,3))
+test[0][0] = 0;
+test[0][1] = 0.5;
+test[0][2] = 0;
+test[1][0] = 0.5;
+test[1][1] = 0.5;
+test[1][2] = 0;
+test[2][0] = 0.5;
+test[2][1] = 0;
+test[2][2] = 0;
+print(test);
 
-for i in range(10):
-    print(redirects[i])
+result = calculations.powerRankMethod(calculations.calculateMMatrix(test))
+print(result)
+
+
+
+
