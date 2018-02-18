@@ -19,7 +19,7 @@ def powerRankMethod(matrix):
         return numpy.sum(v);
 
     dimension = matrix.shape[0]
-    previousVector =( (1/ dimension) + 1) * numpy.ones(dimension, dtype=numpy.float64)
+    previousVector =((1/ dimension) + 1) * numpy.ones(dimension, dtype=numpy.float64)
     currentAnswer = (1/ dimension) * numpy.ones(dimension, dtype=numpy.float64)
     while distance(currentAnswer, previousVector) > PRECISION:
         previousVector = currentAnswer;

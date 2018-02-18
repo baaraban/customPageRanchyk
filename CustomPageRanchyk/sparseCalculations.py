@@ -14,15 +14,14 @@ def calculateMSCRMatrix(matrix):
 
 
 def powerRankSCRMethod(matrix):
-    n = matrix.shape[1]
-    A = np.copy(matrix)
-    A.data /= np.take(A.sum(axis=0), A.indices)
-
-    scores = np.ones(n, dtype=np.float32) * np.sqrt(A.sum() / (n * n))  # initial guess
-    for i in range():
-        scores = A @ scores
-        nrm = np.linalg.norm(scores)
-        scores /= nrm
-        print(nrm)
-
-    return scores
+    def distance(v1, v2):
+        v = np.squeeze(np.asarray(v1)) - np.squeeze(np.asarray(v2))
+        v = v * v
+        return np.sum(v);
+    dimension = matrix.shape[0]
+    previousAnswer = (dimension) * np.ones((dimension,1), dtype=np.float64)
+    currentAnswer = (1 / dimension) * np.ones((dimension,1), dtype=np.float64)
+    while distance(previousAnswer, currentAnswer) > PRECISION:
+        previousAnswer = currentAnswer
+        currentAnswer = matrix @ currentAnswer
+    return currentAnswer
