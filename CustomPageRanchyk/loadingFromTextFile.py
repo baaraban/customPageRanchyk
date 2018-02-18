@@ -2,7 +2,7 @@ import numpy
 import txtPreProcessing
 
 def getMatrixAndDictionary(theme):
-    return createSparse(theme), getDictionary(theme)
+    return createAdjacent(theme), getDictionary(theme)
 
 
 def getAmount(theme):
@@ -26,7 +26,7 @@ def getDictionary(theme):
     return index_map
 
 
-def createSparse(theme):
+def createAdjacent(theme):
     path = txtPreProcessing.getFilePath("/data/text/" + theme + "/", "adj_list")
     amount = getAmount(theme)
     matrix = numpy.zeros(shape=(amount, amount))

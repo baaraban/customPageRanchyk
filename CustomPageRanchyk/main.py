@@ -1,9 +1,11 @@
 import loadingFromTextFile
 import calculations
 import resultsInterpretation
+import sparseCalculations
 import numpy
+import scipy.sparse as sp
 
-matrix, dict = loadingFromTextFile.getMatrixAndDictionary("armstrong")
+matrix, dict = loadingFromTextFile.getMatrixAndDictionary("jaguar")
 
 # test = numpy.ones(shape=(3,3))
 # test[0][0] = 0;
@@ -17,10 +19,19 @@ matrix, dict = loadingFromTextFile.getMatrixAndDictionary("armstrong")
 # test[2][2] = 0;
 # print(test);
 
-result = calculations.powerRankMethod(calculations.calculateMMatrix(matrix))
+stochastic = calculations.calculateMMatrix(matrix)
+result = calculations.powerRankMethod(stochastic)
+
+# sparseMatrix = sp.csr_matrix(matrix)
+# sparse = sparseCalculations.calculateMSCRMatrix(sparseMatrix)
+# sparseResult = sparseCalculations.powerRankSCRMethod(sparse)
+
 interpretation = resultsInterpretation.getTopNArticles(10, result, dict)
+
 for i in range(len(interpretation)):
     print(interpretation[i])
+
+
 
 
 
